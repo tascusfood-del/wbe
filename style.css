@@ -1,141 +1,152 @@
-/* Import font Kenya */
+/* --- 0. Khai báo Font cá nhân --- */
 @font-face {
-    font-family: 'Kenya';
-    src: url('fonts/kenya.ttf') format('truetype');
+    font-family: 'KenyaCoffee'; /* Đặt tên cho font của bạn */
+    /* Đảm bảo bạn có thư mục 'fonts' 
+      và file 'kenya coffee.ttf' bên trong
+    */
+    src: url('fonts/kenya coffee.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* --- Cài đặt chung & Biến màu --- */
+:root {
+    --mau-vang-nen: #efa425;
+    --mau-trang-chu: #ffffff;
+    --mau-do-active: #962c2d;
+    --mau-do-dam-cta: #D90429;
+    --mau-chu-chinh: #212529;
+    
+    /* Gán font cá nhân vào một biến */
+    --font-navbar: 'KenyaCoffee', sans-serif; /* Dùng font của bạn làm font chính */
 }
 
 body {
-    font-family: 'Kenya', sans-serif;
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    line-height: 1.6;
+    /* Thêm một chút nền xám nhạt để thấy Navbar nổi lên */
+    background-color: #f4f4f4; 
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 1. Navbar (ĐÃ CẬP NHẬT FONT VÀ LOGO) --- */
 .navbar {
-    background-color: #efa425;
-    padding: 0;
-    position: fixed;
-    width: 100%;
+    background-color: var(--mau-vang-nen);
+    padding: 10px 0; 
+    position: sticky;
     top: 0;
     z-index: 1000;
+    
+    font-family: var(--font-navbar); 
+    font-size: 20px; 
 }
 
-.nav-container {
+.navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
-.nav-menu {
+/* Style cho logo bằng hình ảnh */
+.navbar-logo img {
+    height: 50px; 
+    width: auto; 
+    display: block; 
+}
+
+.navbar-links {
     display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
+    gap: 25px;
+    align-items: center;
 }
 
-.nav-item {
-    margin: 0;
-}
-
-.nav-link {
-    color: #ffffff;
+.navbar-links a {
     text-decoration: none;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
-    border-radius: 5px;
+    color: var(--mau-trang-chu);
+    transition: color 0.3s;
+    padding: 5px 0;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    background-color: #962c2d;
+.navbar-links a:hover,
+.navbar-links a.active {
+    color: var(--mau-do-active);
 }
 
-.logo {
-    order: 2;
+.navbar-hotline {
+    background-color: var(--mau-do-active);
+    color: var(--mau-trang-chu) !important;
+    padding: 10px 20px !important;
+    border-radius: 50px;
+    border: 2px solid var(--mau-trang-chu);
+    transition: all 0.3s;
+    font-size: 18px; 
 }
 
-.logo img {
-    height: 50px;
-    width: auto;
+.navbar-hotline:hover {
+    background-color: var(--mau-trang-chu);
+    color: var(--mau-do-active) !important;
+    border-color: var(--mau-do-active);
 }
 
-/* Hamburger Menu */
-.hamburger {
+/* --- Cài đặt cho Menu Mobile (Hamburger) --- */
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
     display: none;
     cursor: pointer;
-    order: 3;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.bar {
+.menu-icon span {
     display: block;
-    width: 25px;
+    width: 28px;
     height: 3px;
-    margin: 5px 0;
-    background-color: #ffffff;
-    transition: all 0.3s ease;
+    background-color: var(--mau-trang-chu);
+    border-radius: 3px;
 }
 
-/* Responsive cho màn hình nhỏ */
-@media screen and (max-width: 768px) {
-    .nav-container {
-        flex-wrap: wrap;
-        position: relative;
+/* --- Media Query: Mobile (max-width: 768px) --- */
+@media (max-width: 768px) {
+    
+    .navbar {
+        padding: 5px 0;
+    }
+    .navbar-logo img {
+        height: 45px; /* Giảm chiều cao logo 1 chút trên mobile */
     }
 
-    .nav-menu {
+    .menu-icon {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
         position: absolute;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: #efa425;
-        width: 100%;
-        text-align: center;
-        transition: all 0.3s ease;
-        gap: 0;
-        padding: 1rem 0;
-    }
-
-    .nav-menu.active {
+        top: 55px; /* Chiều cao navbar (45px logo + 10px padding) */
         left: 0;
-    }
-
-    .nav-item {
-        margin: 0.5rem 0;
-    }
-
-    .nav-link {
-        display: block;
-        padding: 1rem;
+        right: 0;
         width: 100%;
+        background-color: var(--mau-vang-nen);
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-hotline {
+         margin: 10px auto 0 auto;
     }
 
-    .hamburger {
-        display: block;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    .logo {
-        order: 1;
-        flex: 1;
+    #menu-toggle:checked ~ .navbar-links {
+        display: flex;
     }
 }
