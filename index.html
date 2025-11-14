@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Navbar</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">Giới thiệu</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link">Dịch vụ</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Liên hệ</a>
-                </li>
-            </ul>
-            <div class="logo">
-                <img src="logo.png" alt="Logo">
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+<nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-logo">
+                <img src="https://via.placeholder.com/150x50.png?text=Tascus+Logo" alt="Tascus Food Logo">
+            </a>
+            
+            <input type="checkbox" id="menu-toggle" />
+            
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="navbar-links">
+                <a href="#gioi-thieu" class="active">Về Tascus</a>
+                <a href="#mo-hinh">Mô Hình</a>
+                <a href="#ly-do">Lý Do Chọn</a>
+                <a href="#chi-phi">Chi Phí</a>
+                <a href="tel:1900998879" class="navbar-hotline">Hotline: 1900 998879</a>
             </div>
         </div>
     </nav>
-
-    <script src="script.js"></script>
-</body>
-</html>
